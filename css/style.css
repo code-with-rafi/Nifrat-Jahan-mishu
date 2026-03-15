@@ -1,0 +1,1175 @@
+@function pxToRem($pixel) {
+  @return ($pixel / 16)+rem;
+}
+
+:root {
+  --color-black: black;
+  --color-white: hsla(0, 0%, 100%, 100%);
+  --color-purple: hsla(278, 100%, 75%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body{
+  /* visibility: hidden; */
+  /* opacity: 0; */
+}
+
+main {
+  margin: 0;
+}
+
+/* ========================================
+   🎬 CINEMATIC HEADING
+======================================== */
+
+.heading {
+  font-size: clamp(3.125rem, 3.464vw + 2.229rem, 5rem);
+  line-height: clamp(4.688rem, 3.349vw + 3.821rem, 6.5rem);
+  text-align: center;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate3d(-50%, -50%, -2000px);
+  opacity: 0.05;
+
+  white-space: nowrap;
+
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* ========================================
+   🌌 ZOOM CONTAINER
+======================================== */
+
+.zoom-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-black);
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+/* ========================================
+   🖼 ZOOM ITEMS
+======================================== */
+
+.zoom-item {
+  position: absolute;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  transition: filter 0.3s ease;
+
+  &[data-layer="3"] {
+    opacity: 0.6;
+    z-index: 3;
+  }
+
+  &[data-layer="2"] {
+    opacity: 0.4;
+    z-index: 2;
+  }
+
+  &[data-layer="1"] {
+    opacity: 0.2;
+    z-index: 1;
+  }
+
+  &:not(.heading) {
+    max-height: 320px;
+    max-width: 320px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    border-radius: 12px;
+    object-fit: cover;
+
+    will-change: transform;
+  }
+
+  /* Subtle cinematic blur depth feel */
+  &[data-layer="1"] img {
+    filter: blur(1px);
+  }
+
+  &[data-layer="3"] img {
+    filter: blur(0px);
+  }
+
+  /* =============================
+     POSITIONING (Your Original)
+  ============================= */
+
+  &:nth-child(2) {
+    left: 15vw;
+    top: 15%;
+    width: 11.5vw;
+  }
+
+  &:nth-child(3) {
+    left: 23%;
+    /* top: 15%; */
+    top: 18%;
+    width: 9.2vw;
+  }
+
+  &:nth-child(4) {
+    left: 38%;
+    top: 13%;
+    width: 11.5vw;
+  }
+
+  &:nth-child(5) {
+    right: 27%;
+    top: 11%;
+    width: 11.6vw;
+  }
+
+  &:nth-child(6) {
+    right: 12%;
+    top: 32%;
+    width: 16.2vw;
+  }
+
+  &:nth-child(7) {
+    bottom: 59%;
+    right: 41.5%;
+    width: 4.7vw;
+  }
+
+  &:nth-child(8) {
+    bottom: 27%;
+    left: 22%;
+    width: 10.5vw;
+  }
+
+  &:nth-child(9) {
+    bottom: 14%;
+    left: 35%;
+    width: 5.9vw;
+  }
+
+  &:nth-child(10) {
+    bottom: 50%;
+    left: 13.5%;
+    width: 5.2vw;
+  }
+
+  &:nth-child(11) {
+    bottom: 12.5%;
+    right: 11%;
+    width: 19vw;
+  }
+
+  &:nth-child(12) {
+    bottom: 16.5%;
+    right: 41%;
+    width: 12.3vw;
+  }
+
+  &:nth-child(13) {
+    right: 14%;
+    top: 7%;
+    width: 8.1vw;
+  }
+
+  &:nth-child(14) {
+    left: 3%;
+    top: 4%;
+    width: 24.1vw;
+  }
+
+}
+
+/* ========================================
+   📱 MOBILE OPTIMIZATION
+======================================== */
+
+@media (max-width: 1024px) {
+  .zoom-item {
+    max-width: 220px;
+    max-height: 220px;
+
+
+    img {
+      border-radius: 6px;
+    }
+
+
+    &:not(.heading) {
+      max-height: 320px;
+      max-width: 242px;
+    }
+
+    &:nth-child(2) {
+      left: 15vw;
+      top: 15%;
+      width: 11.5vw;
+    }
+
+    &:nth-child(3) {
+      left: 25%;
+      top: 23%;
+      width: 9.2vw;
+    }
+
+    &:nth-child(4) {
+      left: 38%;
+      top: 13%;
+      width: 11.5vw;
+    }
+
+    &:nth-child(5) {
+      right: 27%;
+      top: 12%;
+      width: 15.6vw;
+    }
+
+    &:nth-child(6) {
+      right: 12%;
+      top: 32%;
+      width: 18.2vw;
+    }
+
+    &:nth-child(7) {
+      bottom: 54%;
+      right: 40.5%;
+      width: 7.7vw;
+    }
+
+    &:nth-child(8) {
+      bottom: 27%;
+      left: 15%;
+      width: 10.5vw;
+    }
+
+    &:nth-child(9) {
+      bottom: 14%;
+      left: 32%;
+      width: 8.9vw;
+    }
+
+    &:nth-child(10) {
+      bottom: 50%;
+      left: 13.5%;
+      width: 5.2vw;
+    }
+
+    &:nth-child(11) {
+      bottom: 15.5%;
+      right: 15%;
+      width: 15vw;
+    }
+
+    &:nth-child(12) {
+      bottom: 16.5%;
+      right: 41%;
+      width: 12.3vw;
+    }
+
+    &:nth-child(13) {
+      right: 14%;
+      top: 7%;
+      width: 10.1vw;
+    }
+
+    &:nth-child(14) {
+      left: 3%;
+      top: 4%;
+      width: 24.1vw;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .zoom-container {
+    perspective: 900px;
+  }
+
+  .zoom-item {
+    max-width: 180px;
+    max-height: 180px;
+  }
+
+  .heading {
+    font-size: clamp(2rem, 5vw, 3rem);
+    white-space: normal;
+    width: 90%;
+  }
+
+  .opacity-reveal {
+    width: 85%;
+    font-size: clamp(1.6rem, 6vw, 3rem);
+  }
+}
+
+@media (max-width: 614px) {
+  .zoom-item {
+    max-width: 180px;
+    max-height: 180px;
+
+    &:not(.heading) {
+      max-height: 320px;
+      max-width: 215px;
+    }
+
+    &:nth-child(3) {
+      left: 19%;
+      top: 23%;
+      width: 11.2vw;
+    }
+
+    &:nth-child(4) {
+      left: 38%;
+      top: 16%;
+      width: 14.5vw;
+    }
+
+    &:nth-child(5) {
+      right: 25%;
+      top: 12%;
+      width: 18.6vw;
+    }
+
+    &:nth-child(7) {
+      bottom: 54%;
+      right: 40.5%;
+      width: 9.7vw;
+    }
+
+    &:nth-child(8) {
+      bottom: 28%;
+      left: 14%;
+      width: 17.5vw;
+    }
+
+    &:nth-child(9) {
+      bottom: 14%;
+      left: 27%;
+      width: 11.9vw;
+    }
+
+    &:nth-child(10) {
+      bottom: 50%;
+      left: 15.5%;
+      width: 7.2vw;
+    }
+
+    &:nth-child(11) {
+      bottom: 22.5%;
+      right: 8%;
+      width: 24vw;
+    }
+
+    &:nth-child(12) {
+      bottom: 16.5%;
+      right: 32%;
+      width: 17.3vw;
+    }
+
+
+  }
+
+}
+
+@media (max-width: 480px) {
+  .zoom-item {
+    max-width: 140px;
+    max-height: 140px;
+  }
+}
+
+@media (max-width: 430px) {
+  .zoom-item {
+    &:nth-child(3) {
+      left: 15%;
+      top: 23%;
+      width: 15.2vw;
+    }
+
+    &:nth-child(4) {
+      left: 35%;
+      top: 17%;
+      width: 18.5vw;
+    }
+
+    &:nth-child(5) {
+      right: 16%;
+      top: 15%;
+      width: 26.6vw;
+    }
+
+    &:nth-child(6) {
+      right: 12%;
+      top: 33%;
+      width: 23.2vw;
+    }
+
+    &:nth-child(7) {
+      bottom: 54%;
+      right: 43.5%;
+      width: 12.7vw;
+    }
+
+    &:nth-child(8) {
+      bottom: 31%;
+      left: 14%;
+      width: 22.5vw;
+    }
+
+    &:nth-child(9) {
+      bottom: 17%;
+      left: 27%;
+      width: 18.9vw;
+    }
+
+    &:nth-child(10) {
+      bottom: 49%;
+      left: 17.5%;
+      width: 10.2vw;
+    }
+
+    &:nth-child(11) {
+      bottom: 27.5%;
+      right: 8%;
+      width: 33vw;
+    }
+
+    &:nth-child(12) {
+      bottom: 18.5%;
+      right: 20%;
+      width: 25.3vw;
+    }
+
+    &:nth-child(13) {
+      right: 14%;
+      top: 7%;
+      width: 17.1vw;
+    }
+
+    &:nth-child(14) {
+      left: 0%;
+      top: 4%;
+      width: 39.1vw;
+    }
+
+  }
+}
+
+
+#sky-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ========================================
+   ✨ CINEMATIC TEXT SECTION
+======================================== */
+
+.section-stick {
+  height: 100vh;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.opacity-reveal {
+  font-size: clamp(2rem, 6vw, 6rem);
+  line-height: 1.15;
+  width: 70%;
+  margin: 0 auto;
+
+  will-change: transform, opacity;
+}
+
+/* Stick section canvas full coverage */
+#stick-particles {
+  position: absolute;
+  inset: 0;
+  /* top:0; bottom:0; left:0; right:0 */
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* behind the text */
+  pointer-events: none;
+}
+
+.section-stick p.opacity-reveal {
+  position: relative;
+  z-index: 2;
+  /* above the particles */
+}
+
+
+/* ========================================
+   🌌 CINEMATIC TIMELINE SECTION
+======================================== */
+
+.timeline {
+  position: relative;
+  /* background: radial-gradient(circle at center, #111 0%, #000 75%); */
+  padding-top: 150px;
+  padding-bottom: 150px;
+  overflow: hidden;
+}
+
+/* ========================================
+   🎬 HEADING
+======================================== */
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 5px;
+  color: #f5af19;
+  opacity: 0;
+  transform: translateY(40px);
+  text-shadow: 0 0 15px rgba(245, 175, 25, 0.6);
+}
+
+.timeline-subtitle {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #aaa;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ========================================
+   🌠 PARTICLE CANVAS
+======================================== */
+
+#timeline-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Make content above particles */
+.timeline ul {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ========================================
+   📜 TIMELINE LINE
+======================================== */
+
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  margin: 0 auto;
+  padding-top: 50px;
+  /* background: #fff; */
+  background: #ffae00
+}
+
+.timeline ul li::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) rotate(45deg);
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  background: #eee;
+}
+
+/* ========================================
+   📦 CARD DESIGN
+======================================== */
+
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 4px 13px 30px 1px rgba(245, 175, 25, 0.25);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.timeline ul li>div time {
+  position: absolute;
+  background: #f5af19;
+  width: 80px;
+  height: 30px;
+  top: -15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.timeline ul li>div div {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.timeline ul li>div div p {
+  text-align: center;
+}
+
+.timeline ul li>div .discovery {
+  margin-right: 10px;
+}
+
+/* ========================================
+   📍 LEFT / RIGHT POSITIONING
+======================================== */
+
+.timeline ul li:nth-of-type(odd)>div {
+  left: 45px;
+}
+
+.timeline ul li:nth-of-type(even)>div {
+  left: -439px;
+}
+
+/* ========================================
+   🎞 ORIGINAL ANIMATION (UNCHANGED)
+======================================== */
+
+.timeline ul li>div {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.timeline ul li:nth-of-type(odd)>div {
+  transform: translate3d(100px, -10px, 0) rotate(10deg);
+}
+
+.timeline ul li:nth-of-type(even)>div {
+  transform: translate3d(-100px, -10px, 0) rotate(10deg);
+}
+
+.timeline ul li.in-view>div {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+/* ========================================
+   🎬 2022 EMOTIONAL CINEMATIC SECTION
+======================================== */
+
+.section-2022 {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #111 0%, #000 70%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.section-2022 .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, black 10%, transparent 50%, black 90%);
+  pointer-events: none;
+}
+
+.content-2022 {
+  width: 70%;
+  z-index: 2;
+}
+
+.year {
+  font-size: 6rem;
+  opacity: 0.05;
+  margin-bottom: 40px;
+  letter-spacing: 10px;
+}
+
+.line {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.highlight {
+  color: #f5af19;
+}
+
+.arabic {
+  font-size: 2.2rem;
+  margin-top: 40px;
+  color: #f5af19;
+  letter-spacing: 2px;
+}
+
+.final {
+  margin-top: 60px;
+  font-style: italic;
+  opacity: 0;
+}
+
+#particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =======================
+   RESPONSIVE
+======================= */
+
+@media screen and (max-width: 900px) {
+  .timeline ul li>div {
+    width: 250px;
+    flex-direction: column;
+  }
+
+  .timeline ul li>div div {
+    width: 80%;
+    margin: 10px;
+  }
+
+  .timeline ul li:nth-of-type(even)>div {
+    left: -289px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .timeline ul li {
+    margin-left: 20px;
+  }
+
+  .timeline ul li>div {
+    width: calc(100vw - 91px);
+  }
+
+  .timeline ul li:nth-of-type(even)>div {
+    left: 45px;
+  }
+}
+
+
+
+
+/* ========================================
+   🎬 1 YEAR LATER CINEMATIC SECTION
+======================================== */
+
+.section-1y {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #050505 0%, #000 80%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  color: white;
+}
+
+.content-1y {
+  width: 70%;
+  z-index: 2;
+}
+
+.year-1y {
+  font-size: 5rem;
+  letter-spacing: 8px;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.line-1y {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.highlight-1y {
+  color: #f5af19;
+}
+
+.final-1y {
+  margin-top: 50px;
+  font-style: italic;
+  opacity: 0;
+}
+
+/* Particle canvas */
+#one-year-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ========================================
+   🎬 Transiton SECTION
+======================================== */
+.smooth-wrapper {
+  background: black;
+}
+
+header.overlapping {
+  backdrop-filter: blur(23px);
+  padding: 11px;
+  /* border: 1px solid; */
+  border-radius: 19px 0px 23px 0px;
+}
+
+header.reverse-overlapping {
+  /* border: 1px solid; */
+  border-radius: 19px 0px 23px 0px;
+  backdrop-filter: blur(23px);
+  padding: 11px;
+}
+
+svg {
+  width: 104px;
+  height: 104px;
+  z-index: 3;
+}
+
+h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2em, 5vw, 6em);
+  letter-spacing: .5rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.wrapper {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 8em 2em;
+}
+
+.video-bg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-bg svg {
+  position: absolute;
+}
+
+.image-parent {
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-child {
+  height: 120%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  opacity: .6;
+}
+
+.wrapper article {
+  display: grid;
+}
+
+.reverse-overlapping {
+  z-index: 2
+}
+
+@media (min-width:50em) {
+
+  .wrapper article {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .overlapping,
+  .overlapping-video-bg,
+  .reverse-overlapping,
+  .reverse-overlapping-video-bg {
+    grid-row: 1 / 2;
+  }
+
+  .overlapping {
+    z-index: 2;
+    grid-column: 1 / 4;
+    align-self: end;
+  }
+
+  .overlapping-video-bg {
+    grid-column: 2 / -1;
+  }
+
+  .reverse-overlapping {
+    grid-column: 4 / -1;
+    align-self: center;
+  }
+
+  .reverse-overlapping-video-bg {
+    grid-column: 1 / 5;
+  }
+}
+
+.unsplash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8em 0;
+}
+
+a,
+a:hover {
+  color: #fff;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #fff;
+}
+
+@media (prefers-reduced-motion) {
+  .animation {
+    animation-name: dissolve;
+  }
+}
+
+
+/* ========================================
+   🎬 MESSAGE SECTION
+======================================== */
+.msg-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: black;
+  color: white;
+  padding: 0.5rem;
+}
+
+.mySwiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 320px;
+  background: #d1ebff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  filter: blur(4px);
+  border-radius: 10px;
+}
+
+.swiper-slide-active {
+  filter: blur(0px);
+  background: #fff;
+}
+
+.swiper-slide img {
+  width: 100%;
+  /*filter: grayscale(0.85) contrast(1.6);
+  */aspect-ratio: 2 / 3;
+  opacity: 1;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+
+.testomonialBox {
+  color: #999;
+  aspect-ratio: 2 / 3;
+  height: 100%;
+
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  background-image: none;
+}
+
+.msg-header {
+  /* font-size: 0.875rem; */
+  position: relative;
+  font-weight: 300;
+  padding: 30px;
+  max-width: 90%;
+  border-radius: 10px;
+  background: #000000;
+  box-shadow: 15px 15px 30px rgb(26 26 26), -15px -15px 30px rgb(22 20 20);
+}
+
+.msg-header::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: red;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+.msg-header .para{
+  border-radius: 10px;
+    background: #000000;
+    /* box-shadow: 15px 15px 30px rgb(26 26 26), -15px -15px 30px rgb(30 30 30); */
+        /* box-shadow: 15px 15px 47px rgb(30 30 30) inset; */
+    box-shadow: rgba(30, 30, 30) 10px 10px 10px inset;
+    padding: 13px 13px;
+    width: 30%;
+    /* border: 1px solid #161515; */
+    /* margin: auto;*/
+}
+
+.msg-header .para2{
+  border-radius: 10px;
+    background: #000000;
+    box-shadow: rgba(30, 30, 30) 10px 10px 10px inset;
+    padding: 13px 13px;
+    width: 40%;
+}
+
+.msg-header h1 {
+  margin: 0;
+  font-weight: 300;
+  color: #ffca29;
+}
+
+.msg-header div {
+  /* padding-top: 1rem; */
+  /* line-height: 1.5rem; */
+}
+
+.msg-header div p {
+  opacity: 0.8;
+}
+
+.fa-solid {
+  color: red;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #707070;
+}
+
+@media (max-width: 1024px) {
+  .msg-header .para{
+     width: 50%;
+  }
+  .msg-header .para2{
+     width: 93%;
+  }
+}
+
+@media (max-width: 768px) {
+   .msg-header .para2{
+     width: 97%;
+  }
+
+  .msg-header .para{
+     width: 95%;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .msg-header .para{
+     width: 97%;
+  }
+}
+
+.footer{
+  /*background:#111;*/
+  background:#191919;
+  border-radius: 7px;
+  margin: 16px 0px;
+  padding: 8px;
+  font-size:0.9rem;
+  opacity:0.7;
+  text-align: center;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+
+.footer p{
+  
+}
