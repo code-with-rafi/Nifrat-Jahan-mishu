@@ -12,6 +12,7 @@
   box-sizing: border-box;
 }
 
+
 html,
 body {
   margin: 0;
@@ -563,7 +564,7 @@ main {
   font-size: clamp(2.5rem, 5vw, 4rem);
   letter-spacing: 5px;
   color: #f5af19;
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateY(40px);
   text-shadow: 0 0 15px rgba(245, 175, 25, 0.6);
 }
@@ -572,7 +573,7 @@ main {
   margin-top: 20px;
   font-size: 1.2rem;
   color: #aaa;
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateY(40px);
 }
 

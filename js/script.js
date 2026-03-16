@@ -449,46 +449,22 @@ zoomTimeline.to(particleTween, {
 // 📜 TIMELINE CARD SCROLL ANIMATION (UNCHANGED)
 // ============================================
 
-const timelineItems = gsap.utils.toArray(".timeline li");
+const timelineCards = gsap.utils.toArray(".timeline li");
 
-const storyTimeline = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".timeline",
-    start: "top top",
-    end: "+=500%",
-    scrub: 1.2,
-    pin: true
-  }
-});
+timelineCards.forEach((card) => {
 
-// Step 1 → Title
-storyTimeline.to(".timeline-title", {
-  opacity: 1,
-  y: 0,
-  duration: 1
-});
+  ScrollTrigger.create({
+    trigger: card,
+    start: "top 80%",   // when card enters viewport
+    end: "bottom 20%",
 
-// Step 2 → Subtitle
-storyTimeline.to(".timeline-subtitle", {
-  opacity: 1,
-  y: 0,
-  duration: 1
-});
-
-// Step 3,4,5 → Cards
-timelineItems.forEach((item) => {
-
-  storyTimeline.to(item, {
-    duration: 1,
-
-    onStart: () => {
-      item.classList.add("in-view");
+    onEnter: () => {
+      card.classList.add("in-view");
     },
 
-    onReverseComplete: () => {
-      item.classList.remove("in-view");
+    onLeaveBack: () => {
+      card.classList.remove("in-view");
     }
-
   });
 
 });
