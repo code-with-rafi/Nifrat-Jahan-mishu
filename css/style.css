@@ -1146,7 +1146,7 @@ a:hover {
 
   .swiper-button-next,
   .swiper-button-prev {
-    display: none;
+    /* display: none; */
   }
 }
 
