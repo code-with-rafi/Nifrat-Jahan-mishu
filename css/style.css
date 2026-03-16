@@ -179,6 +179,7 @@ main {
     bottom: 50%;
     left: 13.5%;
     width: 5.2vw;
+    filter: grayscale(0.6) contrast(1.1);
   }
 
   &:nth-child(11) {
@@ -1035,8 +1036,8 @@ a:hover {
 
 .swiper-slide img {
   width: 100%;
-  /*filter: grayscale(0.85) contrast(1.6);
-  */aspect-ratio: 2 / 3;
+  /*filter: grayscale(0.85) contrast(1.6);*/
+  aspect-ratio: 2 / 3;
   opacity: 1;
   border-radius: 7px;
   -webkit-border-radius: 7px;
