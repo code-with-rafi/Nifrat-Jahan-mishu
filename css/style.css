@@ -1128,7 +1128,7 @@ a:hover {
 
 @media (max-width: 1024px) {
   .msg-header .para{
-     width: 50%;
+     width: 80%;
   }
   .msg-header .para2{
      width: 93%;
@@ -1153,7 +1153,11 @@ a:hover {
 
 @media (max-width: 400px) {
   .msg-header .para{
-     width: 97%;
+     width: 99%;
+  }
+
+  .msg-header .para2{
+     width: 99%;
   }
 }
 
